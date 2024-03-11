@@ -1,67 +1,75 @@
 
-import java.text.ParseException;  
-import java.text.SimpleDateFormat;  
-import java.util.Date;  
-import java.util.Scanner;  
-import java.util.ArrayList;  
-import java.util.List;  
-  
-public class Event {  
-    public static void main(String[] args) {  
-        Scanner scanner = new Scanner(System.in);  
-        List<Event> events = new ArrayList<>();  
-  
-         
-        while (true) {  
-            System.out.println("Please enter the details of an event (or 'exit' to quit):");  
-  
-             
-            System.out.print("Enter event name: ");  
-            String eventName = scanner.nextLine();  
-            if (eventName.equalsIgnoreCase("exit")) {  
-                break;   
-            }  
-  
-             
-            System.out.print("Enter event venue: ");  
-            @SuppressWarnings("unused")
-            String eventVenue = scanner.nextLine();  
-  
-              
-            System.out.print("Enter event date (YYYY-MM-DD): ");  
-            String eventDateString = scanner.nextLine();  
-  
-             
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
-            @SuppressWarnings("unused")
-            Date eventDate = null;  
-            try {  
-                eventDate = dateFormat.parse(eventDateString);  
-            } catch (ParseException e) {  
-                System.out.println("Invalid date format. Please try again.");  
-                continue;  
-            }  
-  
-             
-            System.out.print("Enter the names of the participants (separated by commas): ");  
-            @SuppressWarnings("unused")
-            String[] participantNames = scanner.nextLine().split(",");  
-  
-            
-  
-            
-            System.out.println("Created event:");  
-            System.out.println("event");  
-  
-            
-            System.out.println("All events created:");  
-            for (Event e : events) {  
-                System.out.println(e);  
-            }  
-        }  
-  
-         
-        scanner.close();  
-    }  
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Event {
+ private String eventID;
+ private String eventName;
+ private String eventVenue;
+ private Date eventDate;
+ private ArrayList<String> eventAttendees;
+
+ public Event(String eventID, String eventName, String eventVenue, Date eventDate) {
+ this.eventID = eventID;
+ this.eventName = eventName;
+ this.eventVenue = eventVenue;
+ this.eventDate = eventDate;
+ this.eventAttendees = new ArrayList<>();
 }
-   
+
+ public void organizeEvent() {
+ }
+
+
+ public String getEventID() {
+return eventID;
+ }
+
+public void setEventID(String eventID) {
+this.eventID = eventID;
+}
+
+  public String getEventName() {
+ return eventName;
+ }
+
+ public void setEventName(String eventName) {
+ this.eventName = eventName;
+ }
+
+ public String getEventVenue() {
+     return eventVenue;
+}
+
+  public void setEventVenue(String eventVenue) {
+ this.eventVenue = eventVenue;
+
+}
+
+ public Date getEventDate() {
+ return eventDate;
+  }
+
+ public void setEventDate(Date eventDate) {
+this.eventDate = eventDate;
+ }
+
+ public ArrayList<String> getEventAttendees() {
+    return eventAttendees;
+}
+
+ public void setEventAttendees(ArrayList<String> eventAttendees) {
+ this.eventAttendees = eventAttendees;
+ }
+
+
+ @Override
+ public String toString() {
+ return "Event{" +"eventID='" + eventID + '\'' +
+               ", eventName='" + eventName + '\''+
+               ", eventVenue='" + eventVenue + '\'' +
+               ", eventDate=" + eventDate  +
+               ", eventAttendees=" + eventAttendees +
+ '}';
+ }
+}
